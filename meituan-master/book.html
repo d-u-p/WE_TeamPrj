@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="app">
+        <span>try.</span>
+        <div id="con">test</div>
+        <button @click="add(message)" v-if="message!=''"></button>
+        <h1 v-text="message"></h1>
+        <input v-model="message"/>
+        <ul>
+            <li v-for="(item,index) in list">
+                {{item}}{{index}}
+                <button @click="remove()"></button>
+            </li>
+        </ul>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                list:[1,2,3],
+                message:1
+            },
+            methods:{
+                add:function(x){
+                    this.list.push(x);
+                },
+                remove:function(index){
+                    this.list.shift();
+                },
+                swap:function(x,y){
+                    var temp=this.list[x];
+                    this.list[x]=this.list[y];
+                    this.list[y]=temp;
+                }
+            }
+        })
+        // var app = new Vue({
+        //     el:"#app",
+        //     data:{
+        //         list:["1","2","3"],
+        //         message:"hello",
+        //         count:1,
+        //         timeout
+        //     },
+        //     methods:{
+                
+        //         add:function(){
+        //             this.list.push(this.message);
+        //         },
+        //         remove:function(index){
+        //             this.list.pop();
+        //         },
+        //         action:function(){
+        //             this.count++;
+        //         },
+        //         debounce:function(func,wait){
+        //             return function(){
+        //                 clearTimeout(timeout)
+        //                 this.timeout = setTimeout(func, wait);
+        //             }
+        //         }
+        //     }
+        // })
+    </script>
+     <script>
+        var count = 1;
+        var con = document.getElementById('con');
+        con.addEventListener('click',function(){
+            debounce(action,1000);
+        });
+        function action(){
+            con.innerHTML = count++;
+        }
+        function dou(func,wait){
+            if(!timeout){
+                func();
+                timeout = setTimeout(() => {
+                    timeout = null;
+                }, wait);
+            }
+        }
+        var timeout;
+        function debounce(){
+            if(timeout){
+                clearTimeout(timeout);
+            }else{
+                func();
+            }
+            timeout = setTimeout(() => {
+                timeout=null;
+            }, 1000);
+        }
+        function debounce(func,wait){
+            if(timeout){
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    timeout = null;
+                }, wait);
+            }else{
+                func();
+            }
+        }
+    </script>
+    <script>
+        var xml = new XMLHttpRequest()
+        xml.open("GET","url")
+        new Promise((resolve,reject)=>{
+            xml.onreadystatechange=function(){
+                if(xml.readyState==4&&xml.status==200){
+                    resolve('success');
+                }else{
+                    reject('error')
+                }
+            }
+        }).then(
+            (val)=>{console.log(val)},
+            (err)=>{console.log(err)}
+        )
+    </script>
+    <script>
+        var a,b;
+        var func = (a,b)=>a+b;
+    </script>
+    <script>
+        axios({
+            method:'post',
+            url:'',
+            data:{
+                username:'lan'
+            },
+            withCredentials:false
+        }).then(function(res){
+
+        }).catch(function(err){
+
+        })
+    </script>
+    <script>
+        
+    </script>
+</body>
+</html>

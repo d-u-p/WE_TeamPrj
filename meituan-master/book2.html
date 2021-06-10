@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id='app' onclick="sayhi()">try</button>
+    <p id="demo"></p>
+
+    <script>
+        function myFunction(){
+	        document.getElementById("demo").innerHTML="Hello World";
+        }
+        var app = document.getElementById("app");
+        app.addEventListener('click',function(){doubleclick(sayhi)})
+        var time=300;
+        var timeout;
+
+        function doubleclick(func){
+            if(timeout){
+                func();
+            }else{
+                timeout = setTimeout(()=>{
+                    timeout = null;
+                },time)
+            }
+        }
+        function sayhi(){
+            console.log('hi');
+        }
+    </script>
+</body>
+</html>
